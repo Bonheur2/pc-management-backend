@@ -6,6 +6,6 @@ studentRouter.post("/registerstudent", createStud);
 studentRouter.get("/allstudents", allStudents);
 studentRouter.get("/search", searchStud);
 studentRouter.delete("/deletethis/:serialNumber", deleteStudent);
-studentRouter.delete("/updatethis/:serialNumber", deleteStudent);
+studentRouter.patch("/updatethis/:serialNumber", updateStudent);
 
 export default studentRouter;

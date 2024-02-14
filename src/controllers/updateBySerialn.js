@@ -1,29 +1,29 @@
-import { student } from "../schema/studentModal";
-
+import { student } from "../schema/studentModal.js";
 
 export const updateStudent = async (req, res) => {
     const serial = req.params.serialNumber;
 
     try {
-        const updatedstudent = await student.findOneAndUpdate(
-            {
-                serialNumber: serial
-            });
-        if (!updatedstudent) {
+        const updatedStudent = await student.findOneAndUpdate(
+            { SerialNumber: serial },
+            req.body,
+            { new: true }
+        );
+
+        if (!updatedStudent) {
             return res.status(404).json({
-                message: "Something went wrong"
-            })
+                message: `No student found with serial number: ${serial}`
+            });
         }
-        else {
-            res.status(200).json({
-                message: "Updated made successfull!!",
-                updatedstudent: updatedstudent
-            })
-        }
+
+        return res.status(200).json({
+            message: "Update successful!",
+            updatedStudent: updatedStudent
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: "Internal server error!"
+        });
     }
-    catch (error) {
-        res.status(500).json({
-            message: "Internal server error!!"
-        })
-    }
-}
+};

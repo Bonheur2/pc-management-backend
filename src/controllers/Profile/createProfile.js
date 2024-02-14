@@ -2,7 +2,7 @@ import { profile } from "../../schema/profileModal.js";
 
 
 export const createProfile = async (req, res) => {
-    let newProfile = await profile.crate(req.body);
+    let newProfile = await profile.create(req.body);
     try {
         if (!newProfile) {
             return res.status(404).json({

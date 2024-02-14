@@ -15,7 +15,7 @@ const profileSchema = mongoose.Schema({
         type: String,
     },
     PhoneNumber: {
-        type: Number,
+        type: String,
         required: true
     },
     Location: {

@@ -1,0 +1,5 @@
+export * from "./CreateStudent.js"
+export * from "./getAllStudent.js"
+export * from "./searchStudent.js"
+export * from "./deleteBySerialN.js"
+export * from "./updateBySerialn.js"
